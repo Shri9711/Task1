@@ -106,6 +106,17 @@ resource "null_resource" "imagedestroy" {
   }
 }
 
+### creating EBS Volume of size 1 ###
+
+resource "aws_ebs_volume" "ebs_vol" {
+  availability_zone = aws_instance.web1.availability_zone
+  size              = 1
+
+  tags = {
+    Name = "tera_ebs"
+  }
+}
+
 
 ### Attach EBS Volume to the instance ###
 
